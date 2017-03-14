@@ -41,6 +41,17 @@ class AllowAny(BasePermission):
         return True
 
 
+class AnyoneForbidden(BasePermission):
+    """
+    Anyone doesn't have the permission.
+    """
+    def has_object_permission(self, request, view, obj):
+        return False
+
+    def has_permission(self, request, view):
+        return False
+
+
 class IsAuthenticated(BasePermission):
     """
     Allows access only to authenticated users.
